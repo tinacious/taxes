@@ -1,0 +1,4 @@
+inputs/*json
+inputs/*csv
+
+outputs/*csv
