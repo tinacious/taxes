@@ -1,11 +1,28 @@
 # Tax scripts
 
+Some handy tax scripts for processing data as expense line items.
+
+Results in output like this:
+
+```csv
+Date,Description,Amount
+2020-01-19,Service,-20.24
+2019-12-31,Service,-12.84
+```
+
+See the relevant sections for generating CSV's
+
+- [Uber](#uber)
+- [Lyft](#lyft)
+
+
 ## Uber
 
 Run `ruby uber.rb` in order to generate the CSV.
 
+To get the input, you'll need to log into [Uber.com](https://uber.com) on the website and load up "My trips."
 
-### Input
+There's an API request called `getTripsForClient`. The response property you want is `data.trips.trips`. As this is paginated, collecting all of the trips can be annoying.
 
 Input should look something like the following. The properties `clientFare` and `requestTime` are used to generate the report.
 
@@ -35,19 +52,16 @@ Input should look something like the following. The properties `clientFare` and 
 There's a lot more properties than expressed above.
 
 
-#### Getting the input
+## Lyft
 
-To get the input, you'll need to log into [Uber.com](https://uber.com) on the website and load up "My trips."
+Run `ruby lyft.rb` in order to generate the CSV.
 
-There's an API request called `getTripsForClient`. The response property you want is `data.trips.trips`. As this is paginated, collecting all of the trips can be annoying.
+To get the input, open the mobile app and go to Settings then "Ride history." From there, tap the button that says "Export" or displays an export icon. Tap **every single trip** you'd like to export.
 
-
-### Output
-
-It should result in something like this:
+You will receive an email with a CSV called `ride_report_YYYY-MM-DD` that looks something like this:
 
 ```csv
-Date,Description,Amount
-2020-01-19,Uber,-20.24
-2019-12-31,Uber,-12.84
+date,origin,destination,total,currency
+2018-12-15 23:49:08,"123 Some St, Toronto","99 Destination Ave, Toronto",$9.51,CAD
+2019-03-30 23:13:50,"456 Another St, Toronto","88 Arrival Blvd, Toronto",$7.60,CAD
 ```
