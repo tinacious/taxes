@@ -2,7 +2,7 @@
 
 Some handy tax scripts for processing data as expense line items.
 
-Results in output like this:
+For use with accounting software that understands the following output:
 
 ```csv
 Date,Description,Amount
