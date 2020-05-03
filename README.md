@@ -14,6 +14,7 @@ See the relevant sections for generating CSV's
 
 - [Uber](#uber)
 - [Lyft](#lyft)
+- [Honk](#honk)
 
 
 ## Uber
@@ -64,4 +65,33 @@ You will receive an email with a CSV called `ride_report_YYYY-MM-DD` that looks 
 date,origin,destination,total,currency
 2018-12-15 23:49:08,"123 Some St, Toronto","99 Destination Ave, Toronto",$9.51,CAD
 2019-03-30 23:13:50,"456 Another St, Toronto","88 Arrival Blvd, Toronto",$7.60,CAD
+```
+
+
+## Honk
+
+Run `ruby honk.rb` in order to generate the CSV from the JSON data. It will leverage the `created_at` and `total_paid` properties to generate the report.
+
+To get the input, visit the Honk website on your computer. Go to the Receipts page. Inspect the receipts API call and get property `data.receipts`.
+
+It should look something like this:
+
+```json
+[
+  {
+    "invoice": "u***c",
+    "start_time": "2018-07-13T23:29:36.000Z",
+    "end_time": "2018-07-14T10:00:00.000Z",
+    "timezone_offset": -240,
+    "status": "sale",
+    "txn_id": 2616681,
+    "created_at": "2018-07-13T23:29:44.000Z",
+    "total_paid": "10.35",
+    "zone_address": {
+      "city": "Toronto",
+      "country_code": "CA"
+    },
+    "has_refund": false
+  }
+]
 ```
