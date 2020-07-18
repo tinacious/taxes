@@ -4,7 +4,7 @@ require 'date'
 
 # See README for instructions
 CSV.open('outputs/honk.csv', 'w') do |csv|
-  csv << ['Date', 'Description', 'Amount']
+  csv << %w[Date Description Amount]
 
   JSON.parse(File.open('inputs/honk.json').read)
     .each do |hash|
