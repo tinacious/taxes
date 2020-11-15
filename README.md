@@ -12,12 +12,33 @@ Date,Description,Amount
 
 See the relevant sections for generating CSV's
 
-- [Uber](#uber)
-- [Lyft](#lyft)
-- [Honk](#honk)
+- [Utils](#utils)
+- [Services](#services)
+  - [Uber](#uber)
+  - [Lyft](#lyft)
+  - [Honk](#honk)
 
 
-## Uber
+## Utils
+
+General utils can be found in the `./utils` directory and can be included as follows:
+
+```rb
+require './utils/sum.rb'
+
+total = sum(something + something_else)
+monthly_average = total / 12
+
+puts "  total:    #{total} \n  average:  #{monthly_average}"
+
+# =>
+#   total:    1200
+#   average:  100
+```
+
+## Services
+
+### Uber
 
 Run `ruby uber.rb` in order to generate the CSV.
 
@@ -53,7 +74,7 @@ Input should look something like the following. The properties `clientFare` and 
 There's a lot more properties than expressed above.
 
 
-## Lyft
+### Lyft
 
 Run `ruby lyft.rb` in order to generate the CSV.
 
@@ -68,7 +89,7 @@ date,origin,destination,total,currency
 ```
 
 
-## Honk
+### Honk
 
 Run `ruby honk.rb` in order to generate the CSV from the JSON data. It will leverage the `created_at` and `total_paid` properties to generate the report.
 
